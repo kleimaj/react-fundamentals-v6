@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { StrictMode } from 'react';
 import SearchParms from './SearchParams';
 
 const App = () => {
@@ -10,4 +11,9 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+  document.getElementById('root')
+);
