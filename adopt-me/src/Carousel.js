@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Carousel = (props) => {
   const [active] = useState(0);
-  const [images] = useState(
-    props || ['https://pets-images.dev-apis.com/pets/none.jpg']
-  );
+  const [images, setImages] = useState([
+    'http://pets-images.dev-apis.com/pets/none.jpg',
+  ]);
+
+  useEffect(() => {
+    if (props.images && props.images.length) setImages(props.images);
+  }, [props.images]);
 
   return (
     <div className="carousel">

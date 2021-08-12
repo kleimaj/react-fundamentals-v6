@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import Carousel from './Carousel';
 
 const Details = (props) => {
   const [loading, setLoading] = useState(true);
@@ -17,17 +18,20 @@ const Details = (props) => {
     setLoading(false);
     setDetails(json.pets[0]);
   }
-  const { animal, breed, city, state, description, name } = details;
+  const { animal, breed, city, state, description, name, images } = details;
   return (
     <div className="details">
       {loading ? (
         <h2>Loading...</h2>
       ) : (
         <>
-          <h1>{name}</h1>
-          <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-          <button>Adopt {name}</button>
-          <p>{description}</p>
+          <Carousel images={images} />
+          <div>
+            <h1>{name}</h1>
+            <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
+            <button>Adopt {name}</button>
+            <p>{description}</p>
+          </div>
         </>
       )}
     </div>
