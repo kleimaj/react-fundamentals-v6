@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 const Details = (props) => {
-  const [, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [details, setDetails] = useState({});
 
   useEffect(() => {
@@ -20,10 +20,16 @@ const Details = (props) => {
   const { animal, breed, city, state, description, name } = details;
   return (
     <div className="details">
-      <h1>{name}</h1>
-      <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-      <button>Adopt ${name}</button>
-      <p>{description}</p>
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : (
+        <>
+          <h1>{name}</h1>
+          <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
+          <button>Adopt ${name}</button>
+          <p>{description}</p>
+        </>
+      )}
     </div>
   );
 };
