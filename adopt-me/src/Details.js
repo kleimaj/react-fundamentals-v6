@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import ThemeContext from './ThemeContext';
 import { withRouter } from 'react-router-dom';
 import Carousel from './Carousel';
 
@@ -29,7 +30,11 @@ const Details = (props) => {
           <div>
             <h1>{name}</h1>
             <h2>{`${animal} - ${breed} - ${city}, ${state}`}</h2>
-            <button>Adopt {name}</button>
+            <ThemeContext.Consumer>
+              {([theme]) => (
+                <button style={{ backgroundColor: theme }}>Adopt {name}</button>
+              )}
+            </ThemeContext.Consumer>
             <p>{description}</p>
           </div>
         </>
